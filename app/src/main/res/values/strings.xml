@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BlogLooker</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="no_item">No Items to Display!</string>
+    <string-array name="android_names">
+        <item>David</item>
+        <item>Kristin</item>
+        <item>Olive</item>
+        <item>Finn</item>
+    </string-array>
+
+</resources>
