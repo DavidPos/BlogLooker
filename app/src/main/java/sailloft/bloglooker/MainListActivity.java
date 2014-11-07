@@ -1,12 +1,13 @@
 package sailloft.bloglooker;
 
-import android.content.res.Resources;
+import android.app.ListActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.app.ListActivity;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -24,9 +25,18 @@ public class MainListActivity extends ListActivity {
         setContentView(R.layout.activity_main_list);
 
         try {
-            URL blogFeedUrl = new URL("http://blog.treehouse.com/api/get_recent_summary/?count=20");
+            URL blogFeedUrl = new URL("http://blog.treehouse.com/api/get_recent_summary/?count=" + NUMBER_OF_POSTS);
+            HttpURLConnection connection = (HttpURLConnection) blogFeedUrl.openConnection();
+            connection.connect();
+
+            int responseCode = connection.getResponseCode();
+            Log.i(TAG, "Code:  "+ responseCode);
+
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Exception caught:  ", e);
+        }
+        catch (IOException e){
+            Log.e(TAG,"Exception caught:  ", e);
         }
 
         //Toast.makeText(this, getString(R.string.no_item), Toast.LENGTH_LONG).show();
